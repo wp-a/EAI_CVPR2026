@@ -11,6 +11,21 @@ Large model weights, LoRA adapters, Docker images, runtime outputs, and account
 credentials are intentionally not committed. See `ARTIFACTS.md` for the expected
 external artifact layout.
 
+## Reviewer Notes
+
+This repository is intended for challenge review and method reproducibility. It
+contains the code paths used to generate the eight EvalAI submission JSON files,
+plus the prompt resources required by those scripts. It does not include:
+
+- EvalAI tokens, account credentials, SSH keys, or local server paths
+- generated submission outputs or previous EvalAI result files
+- model weight binaries, LoRA adapter binaries, Docker image tar files, caches,
+  or runtime logs
+- starter-kit sample outputs or answer-bearing artifacts
+
+The expected external artifacts and their target paths are documented in
+`ARTIFACTS.md` and `MODEL_INVENTORY.md`.
+
 ## Layout
 
 - `scripts/`: reproducible entrypoints and their direct helper scripts
@@ -32,6 +47,21 @@ bash bin/preflight.sh
 Warnings about cached V-AS candidates are expected if you have not copied the
 canonical raw candidate outputs. Model, adapter, and Docker tar warnings are
 expected until you download or mount the external artifacts described below.
+
+## Output Files
+
+The full reproduction pipeline writes the eight expected EAI output files:
+
+```text
+behavior_goal_interpretation_outputs.json
+behavior_subgoal_decomposition_outputs.json
+behavior_action_sequencing_outputs.json
+behavior_transition_modeling_outputs.json
+virtualhome_goal_interpretation_outputs.json
+virtualhome_subgoal_decomposition_outputs.json
+virtualhome_action_sequencing_outputs.json
+virtualhome_transition_modeling_outputs.json
+```
 
 ## Compact BEHAVIOR Prompts
 
