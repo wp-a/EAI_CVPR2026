@@ -1,0 +1,57 @@
+{
+  "project": "eai-8task-repro-kit",
+  "source_repo": "/Users/lx/Documents/eai-starter-kit",
+  "tasks": [
+    {
+      "task": "B-BGI",
+      "entrypoint": "scripts/run_axis06b_behavior_bgi_btm_repro.sh",
+      "command": "TASKS=bgi bash scripts/run_axis06b_behavior_bgi_btm_repro.sh",
+      "output": "outputs/${RUN_ID}/behavior_goal_interpretation_outputs.json"
+    },
+    {
+      "task": "B-BTM",
+      "entrypoint": "scripts/run_axis06b_behavior_bgi_btm_repro.sh",
+      "postprocess": "scripts/postprocess_axis06b_behavior_tm_outputs.py",
+      "command": "TASKS=btm bash scripts/run_axis06b_behavior_bgi_btm_repro.sh",
+      "output": "outputs/${RUN_ID}/behavior_transition_modeling_outputs.json"
+    },
+    {
+      "task": "B-BAS",
+      "entrypoint": "scripts/run_axis06b_bas_bsd_c02_d02_repro.sh",
+      "command": "bash scripts/run_axis06b_bas_bsd_c02_d02_repro.sh",
+      "output": "outputs/${RUN_ID}_d02/D02_complete_7_short_direct_tasks/behavior_action_sequencing_outputs.json"
+    },
+    {
+      "task": "B-BSD",
+      "entrypoint": "scripts/run_axis06b_bas_bsd_c02_d02_repro.sh",
+      "patch": "scripts/apply_bsd_d02_direct_patch.py",
+      "candidate": "D02_complete_7_short_direct_tasks",
+      "command": "bash scripts/run_axis06b_bas_bsd_c02_d02_repro.sh",
+      "output": "outputs/${RUN_ID}_d02/D02_complete_7_short_direct_tasks/behavior_subgoal_decomposition_outputs.json"
+    },
+    {
+      "task": "V-AS",
+      "entrypoint": "scripts/run_vas_v6_repro.sh",
+      "command": "RUN_INFERENCE=1 EXP_ROOT=outputs/vas_v6_2_repro bash scripts/run_vas_v6_repro.sh",
+      "output": "outputs/vas_v6_2_repro/v6_2/virtualhome_action_sequencing_outputs.json"
+    },
+    {
+      "task": "V-GI",
+      "entrypoint": "scripts/reproduce_vgi_qwen06b_sft97_vote.sh",
+      "command": "WORKSPACE=$(pwd) bash scripts/reproduce_vgi_qwen06b_sft97_vote.sh",
+      "output": "outputs/best_vgi_qwen06b_sft97_vote_virtualhome_goal_interpretation_outputs.json"
+    },
+    {
+      "task": "V-SD",
+      "entrypoint": "scripts/reproduce_vsd_baseline_restore_grab.sh",
+      "command": "bash scripts/reproduce_vsd_baseline_restore_grab.sh",
+      "output": "outputs/vsd_baseline_restore_grab_repro_${STAMP}/baseline_restore_grab/virtualhome_subgoal_decomposition_outputs.json"
+    },
+    {
+      "task": "V-TM",
+      "entrypoint": "scripts/reproduce_qwen06b_vtm_official_domain_infer.sh",
+      "command": "GPU=0 bash scripts/reproduce_qwen06b_vtm_official_domain_infer.sh",
+      "output": "outputs/qwen06b_vtm_official_domain_infer/virtualhome_transition_modeling_outputs.json"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+image_id=sha256:e4896bdb93ffab61032f8992624928c198363b5085a0c9ac2af8a7f992de89a2 size=13997460943 tags=["eai-vllm-qwen3:v0.11.1","swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/vllm/vllm-openai:v0.11.1"]

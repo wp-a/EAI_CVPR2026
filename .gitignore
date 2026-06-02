@@ -1,0 +1,24 @@
+/.DS_Store
+/logs/
+/outputs/
+/external_artifacts/*
+!/external_artifacts/README.md
+/vgi_sft_work/qwen06b_vgi97/lora/
+
+# Large binary artifacts from the original server bundle.
+/a.zip
+/models/**/*.safetensors
+/models/**/*.bin
+/models/**/*.pt
+/docker/*.tar
+/vgi_sft_work/**/*.pt
+/vtm_infer_artifacts/**/*.pt
+
+# Runtime/cache/credential files.
+/.cache/
+/.venvs/
+/.evalai/
+/repro_runs/
+/eai_8task_repro_run_archives/
+/submissions/
+*.log
