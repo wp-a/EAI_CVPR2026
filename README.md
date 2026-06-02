@@ -1,16 +1,15 @@
 # EAI CVPR 2026 8-Task Repro Kit
 
-This repository is a GitHub-safe extraction of the reproducible scripts for the
+This repository contains reproducible scripts and lightweight resources for the
 eight CVPR 2026 EAI tasks:
 
 - B-BGI and B-BTM
 - B-BAS and B-BSD
 - V-AS, V-GI, V-SD, and V-TM
 
-The original server bundle was packaged as `a.zip` and included model weights,
-LoRA adapters, and a Docker image tar. Those large binary artifacts are not
-committed here. This repository keeps the runnable scripts, task manifests,
-prompt files, lightweight resources, and artifact documentation.
+Large model weights, LoRA adapters, Docker images, runtime outputs, and account
+credentials are intentionally not committed. See `ARTIFACTS.md` for the expected
+external artifact layout.
 
 ## Layout
 
@@ -21,7 +20,7 @@ prompt files, lightweight resources, and artifact documentation.
 - `docs/task_matrix.md`: compact task summary
 - `bin/preflight.sh`: local file and external-artifact sanity check
 - `models/`: README files only; download model weights separately
-- `docker/`: Docker image pull/load notes; the image tar is not committed
+- `docker/`: Docker image pull/load notes
 
 ## Quick Check
 
@@ -122,7 +121,7 @@ Run B-BAS and B-BSD with prompt-derived direct-goal BSD completion:
 bash scripts/run_axis06b_bas_bsd_c02_d02_repro.sh
 ```
 
-Run V-AS from the bundled models:
+Run V-AS from local or mounted models:
 
 ```bash
 RUN_INFERENCE=1 EXP_ROOT=outputs/vas_v6_2_repro bash scripts/run_vas_v6_repro.sh
@@ -151,7 +150,7 @@ GPU=0 bash scripts/reproduce_qwen06b_vtm_official_domain_infer.sh
 
 ## External Artifacts
 
-See `MODEL_INVENTORY.md`, `external_artifacts/README.md`, and `docker/README.md`
+See `ARTIFACTS.md`, `MODEL_INVENTORY.md`, `external_artifacts/README.md`, and `docker/README.md`
 for model, Docker, adapter, and optional cached-output locations. Most paths can
 be overridden with environment variables such as `MODEL_ROOT`, `MODEL_HOST`,
 `WORKSPACE_HOST`, `ROOT`, `EXP_ROOT`, `CACHE_HOST`, `RUN_INFERENCE`, and
@@ -159,7 +158,6 @@ be overridden with environment variables such as `MODEL_ROOT`, `MODEL_HOST`,
 
 Large artifacts intentionally excluded from Git:
 
-- `a.zip`, the original 39 GB server bundle
 - `models/**/*.safetensors`
 - `vgi_sft_work/**/*.pt`
 - `vtm_infer_artifacts/**/*.pt`
@@ -170,8 +168,8 @@ Large artifacts intentionally excluded from Git:
 
 - `scripts/run_qwen3_vllm_offline.sh` is included as the missing single-GPU
   helper required by `scripts/run_qwen3_selected_4gpu_sharded.sh`.
-- V-TM uses the bundled pre-trained Qwen3-0.6B official-domain VTM LoRA and
-  runs inference only; it does not retrain inside the bundle.
+- V-TM uses a pre-trained Qwen3-0.6B official-domain VTM LoRA and runs
+  inference only.
 - B-BAS and B-BSD share the same entrypoint because the reproducible recipe first
   creates the C02 BAS/BSD outputs, then applies conservative BSD direct-goal
   completion derived from each prompt's goal-state section. This completion is

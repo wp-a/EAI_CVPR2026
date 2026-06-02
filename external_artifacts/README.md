@@ -1,7 +1,8 @@
 # External Artifacts
 
-This repro kit vendors model weights and the Docker image tar in the server
-bundle. Large historical output directories are still optional.
+The repository does not commit model weights, LoRA adapters, Docker image tar
+files, or runtime outputs. Place external artifacts at the paths below, or
+override paths with the environment variables used by each script.
 
 Expected external artifacts:
 

@@ -8,9 +8,9 @@ set -euo pipefail
 IMAGE="${IMAGE:-eai-vllm-qwen3:v0.11.1}"
 WORKSPACE_HOST="${WORKSPACE_HOST:-$(pwd)}"
 MODEL_ROOT="${MODEL_ROOT:-${WORKSPACE_HOST}/models/AxisTilted2}"
-CACHE_HOST="${CACHE_HOST:-/home/user/.cache/vllm_axis06b}"
+CACHE_HOST="${CACHE_HOST:-${WORKSPACE_HOST}/.cache/vllm_axis06b}"
 RUN_ID="${RUN_ID:-axis06b_bgi_btm_repro_$(date +%Y%m%d_%H%M%S)}"
-LOG_ROOT="${LOG_ROOT:-/home/user/eai_runs/${RUN_ID}}"
+LOG_ROOT="${LOG_ROOT:-${WORKSPACE_HOST}/logs/${RUN_ID}}"
 
 BGI_PROMPT_DIR="${BGI_PROMPT_DIR:-llm_prompts_axis06b_behavior_compact}"
 BTM_PROMPT_DIR="${BTM_PROMPT_DIR:-llm_prompts}"

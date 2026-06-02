@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Inference-only VTM reproduction.
-# Uses the bundled Qwen3-0.6B model plus a pre-trained official-domain VTM LoRA.
+# Uses Qwen3-0.6B plus a pre-trained official-domain VTM LoRA.
 
 ROOT_DIR="${ROOT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 
@@ -13,7 +13,7 @@ WORKSPACE_HOST="${WORKSPACE_HOST:-$ROOT_DIR}"
 if [[ -z "${MODELS_HOST:-}" && -d "$ROOT_DIR/models" ]]; then
   MODELS_HOST="$ROOT_DIR/models"
 fi
-MODELS_HOST="${MODELS_HOST:-/public/localUsers/lixiang/EAI_CVPR2026/models}"
+MODELS_HOST="${MODELS_HOST:-$ROOT_DIR/models}"
 
 if [[ "$USE_DOCKER" == "1" && "${IN_DOCKER:-0}" != "1" ]]; then
   docker run --rm \
@@ -124,7 +124,7 @@ generation_report = json.load(open(sys.argv[2], encoding="utf-8"))
 postprocess_report = json.load(open(sys.argv[3], encoding="utf-8"))
 manifest = {
     "method": "Qwen3-0.6B official-domain VTM LoRA inference only",
-    "training": "not run in this reproduction; uses bundled pre-trained adapter",
+    "training": "not run in this reproduction; uses a pre-trained adapter",
     "domain_pddl": str(domain_pddl),
     "domain_sha256": hashlib.sha256(domain_pddl.read_bytes()).hexdigest(),
     "model": generation_report.get("model"),

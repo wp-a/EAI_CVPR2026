@@ -5,8 +5,8 @@
 !/external_artifacts/README.md
 /vgi_sft_work/qwen06b_vgi97/lora/
 
-# Large binary artifacts from the original server bundle.
-/a.zip
+# Large binary artifacts.
+*.zip
 /models/**/*.safetensors
 /models/**/*.bin
 /models/**/*.pt

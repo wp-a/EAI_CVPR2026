@@ -1,7 +1,8 @@
 # Model Inventory
 
-The server bundle keeps real model files under `models/` and the V-GI LoRA
-adapter under `vgi_sft_work/`.
+The inference scripts expect model files under `models/` and LoRA/adapters under
+the paths listed below. The Git repository contains only README files for model
+directories; download or mount the real weights before running full inference.
 
 Required copied directories/files:
 
@@ -17,7 +18,7 @@ Required copied directories/files:
 - `vtm_infer_artifacts/qwen06b_vtm_official_domain_fast/lora_30/adapter_step200.pt`
   for V-TM inference-only reproduction
 
-Approximate source sizes on the L40s server:
+Approximate artifact sizes:
 
 - `models/Qwen3-0.6B`: 2.9G
 - `models/Qwen3-32B-AWQ`: 18G

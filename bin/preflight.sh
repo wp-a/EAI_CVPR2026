@@ -37,7 +37,7 @@ soft_dir() {
 
 note_file() {
   if [[ ! -f "$1" ]]; then
-    echo "NOTE optional cached output not bundled: $1"
+    echo "NOTE optional cached output not present: $1"
   fi
 }
 

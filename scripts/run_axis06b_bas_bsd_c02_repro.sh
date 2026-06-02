@@ -8,7 +8,7 @@ RUN_ID="${RUN_ID:-axis06b_bas_bsd_c02_repro_$(date +%Y%m%d_%H%M%S)}"
 IMAGE="${IMAGE:-eai-vllm-qwen3:v0.11.1}"
 WORKSPACE_HOST="${WORKSPACE_HOST:-$(pwd)}"
 MODEL_ROOT="${MODEL_ROOT:-${WORKSPACE_HOST}/models/AxisTilted2}"
-CACHE_HOST="${CACHE_HOST:-/home/user/.cache/vllm_axis06b}"
+CACHE_HOST="${CACHE_HOST:-${WORKSPACE_HOST}/.cache/vllm_axis06b}"
 PROMPT_DIR="${PROMPT_DIR:-llm_prompts_axis06b_behavior_compact}"
 OUT_ROOT="${OUT_ROOT:-outputs/${RUN_ID}}"
 RAW_ROOT="${RAW_ROOT:-outputs/${RUN_ID}_raw}"
@@ -32,7 +32,7 @@ fi
 
 final_output_dir="${OUT_ROOT}/${CANDIDATE}"
 raw_output_dir="${RAW_ROOT}/${CANDIDATE}"
-log_dir="${LOG_ROOT:-/home/user/eai_runs/${RUN_ID}/${CANDIDATE}}"
+log_dir="${LOG_ROOT:-${WORKSPACE_HOST}/logs/${RUN_ID}/${CANDIDATE}}"
 mkdir -p "${final_output_dir}" "${raw_output_dir}" "${log_dir}"
 
 echo "RUN_ID=${RUN_ID}"

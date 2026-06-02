@@ -1,6 +1,6 @@
 {
   "project": "eai-8task-repro-kit",
-  "source_repo": "/Users/lx/Documents/eai-starter-kit",
+  "source_repo": "CVPR 2026 EAI starter-kit compatible layout",
   "tasks": [
     {
       "task": "B-BGI",
