@@ -48,6 +48,11 @@ virtualhome_action_sequencing_outputs.json
 virtualhome_transition_modeling_outputs.json
 ```
 
+## Technical Report
+
+The accompanying technical report is available at
+[`docs/reports/cream_technical_report.pdf`](docs/reports/cream_technical_report.pdf).
+
 ## Compact BEHAVIOR Prompts
 
 The directory `llm_prompts_axis06b_behavior_compact/` is reproducible from the
