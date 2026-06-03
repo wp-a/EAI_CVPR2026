@@ -7,24 +7,9 @@ eight CVPR 2026 EAI tasks:
 - B-BAS and B-BSD
 - V-AS, V-GI, V-SD, and V-TM
 
-Large model weights, LoRA adapters, Docker images, runtime outputs, and account
-credentials are intentionally not committed. See `ARTIFACTS.md` for the expected
-external artifact layout.
-
-## Reviewer Notes
-
-This repository is intended for challenge review and method reproducibility. It
-contains the code paths used to generate the eight EvalAI submission JSON files,
-plus the prompt resources required by those scripts. It does not include:
-
-- EvalAI tokens, account credentials, SSH keys, or local server paths
-- generated submission outputs or previous EvalAI result files
-- model weight binaries, LoRA adapter binaries, Docker image tar files, caches,
-  or runtime logs
-- starter-kit sample outputs or answer-bearing artifacts
-
-The expected external artifacts and their target paths are documented in
-`ARTIFACTS.md` and `MODEL_INVENTORY.md`.
+Large model weights, LoRA adapters, Docker images, and runtime outputs are
+handled as external artifacts. See `ARTIFACTS.md` for the expected artifact
+layout.
 
 ## Layout
 
@@ -186,13 +171,13 @@ be overridden with environment variables such as `MODEL_ROOT`, `MODEL_HOST`,
 `WORKSPACE_HOST`, `ROOT`, `EXP_ROOT`, `CACHE_HOST`, `RUN_INFERENCE`, and
 `SUBMISSION_SOURCE_DIR`.
 
-Large artifacts intentionally excluded from Git:
+External and runtime artifacts are not tracked in Git:
 
 - `models/**/*.safetensors`
 - `vgi_sft_work/**/*.pt`
 - `vtm_infer_artifacts/**/*.pt`
 - `docker/*.tar`
-- runtime logs, outputs, caches, and EvalAI credentials
+- runtime logs, outputs, and caches
 
 ## Notes
 
